@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="invalid.css">
+        <title>Login Page</title>
+    </head>
+    <script>
+        rem()
+        function sleep(ms)
+        {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function rem()
+        {
+            await sleep(1);
+            document.getElementById("inv").style.opacity = '0';
+            document.getElementById("inv").style.visibility = "hidden";
+        }
+        async function getinputvalue()
+        {
+            var username = document.getElementById("uname").value;
+            var password = document.getElementById("pword").value;
+
+            if(username != "")
+            {
+                document.getElementById("uname").style.borderColor = "rgb(179, 177, 177)";
+            }
+            if(username == "")
+            {
+                document.getElementById("pword").value = "";
+                document.getElementById("uname").style.borderColor = "red";
+                await sleep(700);
+                document.getElementById("uname").style.borderColor = "rgb(179, 177, 177)";
+                await sleep(700);
+                document.getElementById("uname").style.borderColor = "red";
+                return
+            }
+
+            if(password == "")
+            {
+                document.getElementById("pword").style.borderColor = "red";
+                await sleep(700);
+                document.getElementById("pword").style.borderColor = "rgb(179, 177, 177)";
+                await sleep(700);
+                document.getElementById("pword").style.borderColor = "red";
+                return
+            }
+            if(password != "")
+            {
+                document.getElementById("pword").style.borderColor = "rgb(179, 177, 177)";
+            }
+            
+                document.getElementById("forms").submit();
+        }
+        function nofocus(id)
+        {
+            var data = document.getElementById(id).value;
+            if(data != "")
+            {
+                document.getElementById(id).style.borderColor = "rgb(179, 177, 177)";
+            }
+        }
+        function myFunction()
+        {
+            var x = document.getElementById("pword");
+            if (x.type === "password") {
+              x.type = "text";
+            } else {
+              x.type = "password";
+            }
+        }
+
+    </script>
+    <body>
+        <header class="h1" id="h1">&nbsp;&nbsp; JOB PLACEMENTS INFORMATION</header>
+        <form class="forms" id="forms" method="get" action="login">
+            <table class="tables" id="tables">
+                <tr>
+                    <td class="ab"><br>Username</td>
+                    <td class="ba">
+                        <br><input type="text" name="uname" id="uname" maxlength="20" onblur="nofocus('uname')" maxlength="15" placeholder="Enter username..">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="a">Password</td>
+                    <td class="bc">
+                        <input type="password" name="pword" id="pword" maxlength="20" onblur="nofocus('pword')" placeholder="Enter password..">
+                        <input type="checkbox" id="show" onclick="myFunction()">
+                        <label for="show" class="sh">Show Password</label></td>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="c" colspan = "2" align="center">
+                        <button onclick="getinputvalue()" accesskey="q" class="btn">Submit</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" class="regi_link">&ensp;&ensp;Are you a New Student to Register? &ensp;&ensp;&ensp; <a href="registration.html">Register</a></td>
+                </tr>
+            </table>
+            <br>
+            <p class="inv" id="inv">INVALID USERNAME OR PASSWORD, TRY AGAIN</p>
+        </form>
+    </body>
+</html>

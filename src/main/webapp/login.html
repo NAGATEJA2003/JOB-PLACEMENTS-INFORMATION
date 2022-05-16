@@ -1,0 +1,150 @@
+<html>
+    <head>
+        <title>Login Page</title>
+        <meta charset="ISO-8859-1">
+        <link rel="stylesheet" type="text/css" href="login.css">
+
+        <script>
+            document.body.style.backgroundImage = "white";
+            function sleep(ms)
+            {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+            function login_page()
+            {
+                async function sample()
+                {
+                    document.getElementById('logo').style.transition = "2s"
+                    document.getElementById('logo').style.opacity = "0";
+
+                    document.getElementById('login_btn').style.transition = "2s"
+                    document.getElementById('login_btn').style.opacity = "0"
+
+                    setTimeout(() => {
+                        document.getElementById('logo').style.display = "none"
+                        document.getElementById("login_btn").style.display = "none"
+                    }, 1000);
+
+                    await sleep(2000);
+                    document.getElementById("tables").style.visibility = "visible"
+                    document.getElementById("h1").style.visibility = "visible"
+                    document.getElementById("h2").style.visibility = "visible"
+
+                    document.getElementById('tables').style.transition = "1s"
+                    document.getElementById("tables").style.transform = "translateY(0%)"
+
+                    document.getElementById('h1').style.transition = "1s"
+                    document.getElementById("h1").style.transform = "translate(0%)"
+
+                    document.getElementById('h2').style.transition = "1s"
+                    document.getElementById("h2").style.transform = "translate(0%)" 
+                }
+                sample()
+            }
+
+            function nofocus(id)
+            {
+                var data = document.getElementById(id).value;
+                if(data != "")
+                {
+                    document.getElementById(id).style.borderColor = "rgb(179, 177, 177)";
+                }
+            }
+            async function getinputvalue()
+            {
+                var username = document.getElementById("uname").value;
+                var password = document.getElementById("pword").value;
+
+                if(username != "")
+                {
+                    document.getElementById("uname").style.borderColor = "rgb(179, 177, 177)";
+                }
+                if(username == "")
+                {
+                    document.getElementById("pword").value = "";
+                    document.getElementById("uname").style.borderColor = "red";
+                    await sleep(700);
+                    document.getElementById("uname").style.borderColor = "rgb(179, 177, 177)";
+                    await sleep(700);
+                    document.getElementById("uname").style.borderColor = "red";
+                    return
+                }
+
+                if(password == "")
+                {
+                    document.getElementById("pword").style.borderColor = "red";
+                    await sleep(700);
+                    document.getElementById("pword").style.borderColor = "rgb(179, 177, 177)";
+                    await sleep(700);
+                    document.getElementById("pword").style.borderColor = "red";
+                    return
+                }
+                if(password != "")
+                {
+                    document.getElementById("pword").style.borderColor = "rgb(179, 177, 177)";
+                }
+                
+                
+                document.getElementById("forms").submit();
+            }
+            function myFunction() {
+                var x = document.getElementById("pword");
+                if (x.type === "password") {
+                  x.type = "text";
+                } else {
+                  x.type = "password";
+                }
+              }
+          </script>
+    </head>
+    <body>
+        
+        <input type="button" id="login_btn" value="LOGIN" onclick="login_page()">
+        <header class="h1" id="h1">JOB PLACEMEN</header>
+        <header class="h2" id="h2">TS&nbsp;INFORMATION</header>
+        <div class="logo_page">
+            <section>
+                <ul>
+                    <li>
+                        <a id="logo" href="#" data-text=">> LOGIN <<" onclick="login_page()">
+                        <button>
+                            <img src="logo.png" alt="Login" width="200px" height="200px">
+                         </button>
+                    </a></li>
+                </ul>
+            </section>
+        </div>
+
+
+
+        <form class="forms" id="forms" method="get" action="login">
+            <table class="tables" id="tables">
+                <tr>
+                    <td class="ab"><br>Username</td>
+                    <td class="ba">
+                        <br><input type="text" name="uname" id="uname" onblur="nofocus('uname')" maxlength="15" placeholder="Enter username..">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="a">Password</td>
+                    <td class="bc">
+                        <input type="password" name="pword" id="pword" onblur="nofocus('pword')" placeholder="Enter password..">
+                        <input type="checkbox" id="show" onclick="myFunction()">
+                        <label for="show" class="sh">Show Password</label></td>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="c" colspan = "2" align="center">
+                        <button onclick="getinputvalue()" accesskey="q" class="btn">Submit</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" class="regi_link">&ensp;&ensp;Are you a New Student to Register? &ensp;&ensp;&ensp; <a href="registration.html">Register</a></td>
+                </tr>
+
+            </table>
+        </form>
+    </body>
+</html>

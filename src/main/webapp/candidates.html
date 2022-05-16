@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="candidates.css">
+<html>
+
+    <head>
+        <title>Jobs Placement Information</title>
+    </head>
+
+    <script>
+        function isNumber(evt)
+        {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+            {
+                return false;
+            }
+            return true;
+        }
+        function submit_form()
+        {
+            var gradu = document.getElementsByClassName("grad").value;
+            var gpa = document.getElementsByClassName("cgpa").value;
+            document.getElementById("sort").submit();
+            alert("Data Updated");
+        }
+    </script>
+
+    <body>
+        <header>JOB CANDIDATES</header>
+        <br>
+        <p>
+            <ol>
+                <li class="logout"><a href="login.html">LOG OUT</a></li>
+                <li class="ul"><a href="login.html">________</a></li>
+            </ol>
+        </p>
+        <form class="sort" id="sort">
+        <div class="table-wrapper">
+        <table class="cand" cellpadding="0" cellspacing="0" width="90%">
+                <tr class="head">
+                    <td>NO</td>
+                    <td>NAME</td>
+                    <td>REG ID</td>
+                    <td>STREAM</td>
+                    <td class="gra">
+                        GRADUATION : 
+                        <select name="grad" class="grad" id="grad">
+                            <option selected value="all">ALL</option>
+                            <option value="ug">UNDER GRADUATION (UG)</option>
+                            <option value="pg">POST GRADUATION (PG)</option>
+                        </select>
+                    </td>
+                    <td>CGPA > <input type="text" name="cgpa" id="cgpa" value="0" class="cgpa" onkeypress="return isNumber(event)" maxlength="2">
+                    <input type="button" value="SELECT" onclick="submit_form()">
+                    </td>
+                    
+                </tr>
+                <tr class="job">
+                    <td>1</td>
+                    <td>AKULA RAVI</td>
+                    <td>2000080142</td>
+                    <td>AI & DS</td>
+                    <td>UG</td>
+                    <td>8.75</td>
+                </tr>
+                <tr class="job">
+                    <td>2</td>
+                    <td>SIVA SANKARA ADHI</td>
+                    <td>2000080142</td>
+                    <td>AI & DS</td>
+                    <td>UG</td>
+                    <td>8.75</td>
+                </tr>
+
+                <tr class="job">
+                    <td>3</td>
+                    <td>SAMEER</td>
+                    <td>2000080064</td>
+                    <td>MCS</td>
+                    <td>PG</td>
+                    <td>9.13</td>
+                </tr>
+
+                <tr class="job">
+                    <td>2</td>
+                    <td>SIVA SANKARA ADHI</td>
+                    <td>2000080142</td>
+                    <td>AI & DS</td>
+                    <td>UG</td>
+                    <td>8.75</td>
+                </tr>
+
+                <tr class="job">
+                    <td>2</td>
+                    <td>SIVA SANKARA ADHI</td>
+                    <td>2000080142</td>
+                    <td>AI & DS</td>
+                    <td>UG</td>
+                    <td>8.75</td>
+                </tr>
+
+                <tr class="job">
+                    <td>2</td>
+                    <td>SIVA SANKARA ADHI</td>
+                    <td>2000080142</td>
+                    <td>AI & DS</td>
+                    <td>UG</td>
+                    <td>8.75</td>
+                </tr>
+
+                <tr class="job">
+                    <td>2</td>
+                    <td>SIVA SANKARA ADHI</td>
+                    <td>2000080142</td>
+                    <td>AI & DS</td>
+                    <td>UG</td>
+                    <td>8.75</td>
+                </tr>
+
+                <tr class="job">
+                    <td>2</td>
+                    <td>SIVA SANKARA ADHI</td>
+                    <td>2000080142</td>
+                    <td>AI & DS</td>
+                    <td>UG</td>
+                    <td>8.75</td>
+                </tr>
+        </table>
+        </div>
+    </form>
+    </body>
+</html>
