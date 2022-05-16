@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" type="text/css" href="regis.css">
+    <head>
+        <title>Registration Page</title>
+        <script>
+            function nofocus(id)
+            {
+                var data = document.getElementById(id).value;
+                if(data != "")
+                {
+                    document.getElementById(id).style.borderColor = "rgb(179, 177, 177)";
+                }
+            }
+
+            function sleep(ms)
+            {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+
+            async function divi()
+            {
+                await sleep(700);
+                div.getElementById("line").style.width = "100%";
+                div.getElementById("line").style.transition = '1s';
+            }
+            //divi()
+
+
+            function isNumber(evt)
+            {
+                evt = (evt) ? evt : window.event;
+                var charcode = (evt.which) ? evt.which : evt.keyCode;
+                if((charcode > 31 && charcode < 48 || charcode > 57) && charcode != 46)
+                {
+                    return false;
+                }
+                return true;
+            }
+
+            function myFunction(id)
+            {
+                var x = document.getElementById(id);
+                if (x.type === "password") {
+                  x.type = "text";
+                } else {
+                  x.type = "password";
+                }
+            }
+            
+            function register()
+            {
+                var name = document.getElementById("name").value;
+                var uname = document.getElementById("uname").value;
+                var id = document.getElementById("regid").value;
+                var grad = document.getElementById("grad").value;
+                var cgpa = document.getElementById("cgpa").value;
+                var stream = document.getElementById("stream").value;
+                var pword = document.getElementById("password").value;
+                var conf = document.getElementById("confirm").value;
+                if(name == "")
+                {
+                    document.getElementById("name").style.borderColor = "red";
+                    return
+                }
+                if(uname == "")
+                {
+                    document.getElementById("uname").style.borderColor = "red";
+                    return
+                }
+                if(id == "")
+                {
+                    document.getElementById("regid").style.borderColor = "red";
+                    return
+                }
+                function countChar(str, x)
+                {
+                    let count = 0;
+                    for (let i = 0; i < str.length; i++)
+                    {
+                        if (str[i] == x)
+                            count++;
+                    }
+                    return count;
+                }
+                if(stream == "")
+                {
+                    document.getElementById("stream").style.borderColor = "red";
+                    return
+                }
+                if(cgpa == "" || countChar(cgpa,'.') > 1)
+                {
+                    document.getElementById("cgpa").style.borderColor = "red";
+                    return
+                }
+                if(pword.length < 8)
+                {
+                    document.getElementById("password").style.borderColor = "red";
+                    return
+                }
+                if(conf.length < 8)
+                {
+                    document.getElementById("confirm").style.borderColor = "red";
+                    return
+                }
+
+                if(pword > conf || pword < conf)
+                {
+                    document.getElementById("password").style.borderColor = "red";
+                    document.getElementById("confirm").style.borderColor = "red";
+                    return
+                }
+
+                if(pword == conf)
+                {
+                    document.getElementById("reg").submit();
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <table align="center">
+            <form id="reg" method="get" action="register">
+                <tr class="header">
+                    <td colspan="2" align="center">REGISTRATION &ensp;FORM</td>
+                </tr>
+
+                <tr><td colspan="2"><div class="line"></div></td></tr>
+
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" id="name" name="name" onblur="nofocus('name')" maxlength="20"></td>
+                </tr>
+
+                <tr>
+                    <td>User Name</td>
+                    <td><input type="text" id="uname" name="uname" onblur="nofocus('uname')" maxlength="20"></td>
+                </tr>
+
+                <tr>
+                    <td>Registration Id</td>
+                    <td><input type="text" id="regid" name="regid" onblur="nofocus('regid')" onkeypress="return isNumber(event)" maxlength="25"></td>
+                </tr>
+
+                <tr>
+                    <td>Stream</td>
+                    <td><input type="text" id="stream" name="stream" onblur="nofocus('stream')" maxlength="20"></td>
+                </tr>
+
+                <tr>
+                    <td>Graduation</td>
+                    <td><select name="grad" class="grad" id="grad">
+                        <option value="UG">UNDER GRADUATION (UG)</option>
+                        <option value="PG">POST GRADUATION (PG)</option>
+                    </select>
+                </tr>
+
+                <tr>
+                    <td>CGPA</td>
+                    <td><input type="text" id="cgpa" name="cgpa" onblur="nofocus('cgpa')" 
+                        onkeypress="return isNumber(event)" maxlength="5"></td>
+                </tr>
+
+                <tr>
+                    <td>Password<p>(min 8 char)</p></td>
+                    <td><input type="password" id="password" onblur="nofocus('password')" name="password" maxlength="20">
+                        <input type="checkbox" onclick="myFunction('password')" id="show">
+                        <label for="show" class="sh">Show Password</label></td>
+
+                </tr>
+
+                <tr>
+                    <td>Confirm Password</td>
+                    <td><input type="password" id="confirm" onblur="nofocus('confirm')" name="password" maxlength="20">
+                        <input type="checkbox" onclick="myFunction('confirm')" id="shows">
+                        <label for="shows" class="sh">Show Password</label></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" align="center"><input type="button" value="REGISTER" onclick="register()"></td>
+                </tr>
+                <tr class="login_link">
+                    <td colspan="2">Already Registered?&ensp;&ensp;<a href="login.html">Login</a></td>
+                </tr>
+
+            </form>
+        </table>
+    </body>
+</html>
